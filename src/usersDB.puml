@@ -1,0 +1,51 @@
+@startuml
+' Entities
+entity users {
+  *id: UUID (PK)
+  --
+  *vuz_guid: String (UNIQUE)
+  full_name: String
+  first_name: String
+  surname: String
+  middle_name: String
+  type: ENUM(student, employee)
+  created_at: DateTime
+  updated_at: DateTime
+}
+
+entity students {
+  *user_id: UUID (FK -> users.id)
+  --
+  department: String
+  group: String
+  course: Integer
+  start_year: Integer
+  degree_level: String
+  degree_form: String
+}
+
+entity employees {
+  *user_id: UUID (FK -> users.id)
+  --
+  mail: String
+  date_of_birth: Date
+}
+
+entity employee_employments {
+  *id: UUID (PK)
+  *employee_id: UUID (FK -> employees.user_id)
+  --
+  job_title: String
+  staff_category: String
+  employment_type: String
+  sub_division: String
+  sub_division_guid: String
+  job_state: String
+}
+
+' Relationships
+users ||--o{ students : "Студент"
+users ||--o{ employees : "Преподаватель"
+employees ||--o{ employee_employments : "Трудоустройства"
+
+@enduml
