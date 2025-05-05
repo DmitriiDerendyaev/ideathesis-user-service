@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.derendyaev.ideathesis_user_service.user.dto.UserAllDto;
 import ru.derendyaev.ideathesis_user_service.user.service.UserService;
-import ru.derendyaev.ideathesis_user_service.user.model.User;
 
 import java.util.List;
 import java.util.UUID;

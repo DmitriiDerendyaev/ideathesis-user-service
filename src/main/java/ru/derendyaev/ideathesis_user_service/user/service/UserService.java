@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.derendyaev.ideathesis_user_service.exception.ObjectNotFoundException;
 import ru.derendyaev.ideathesis_user_service.user.dto.UserAllDto;
 import ru.derendyaev.ideathesis_user_service.user.mapper.UserMapper;
-import ru.derendyaev.ideathesis_user_service.user.model.User;
 import ru.derendyaev.ideathesis_user_service.user.repository.UserRepository;
 
 import java.util.List;

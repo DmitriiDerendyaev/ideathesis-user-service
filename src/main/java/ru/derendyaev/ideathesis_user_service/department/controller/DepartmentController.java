@@ -1,4 +1,4 @@
-package ru.derendyaev.ideathesis_user_service.department;
+package ru.derendyaev.ideathesis_user_service.department.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.derendyaev.ideathesis_user_service.department.service.DepartmentService;
+import ru.derendyaev.ideathesis_user_service.department.model.Department;
 
 import java.util.List;
 

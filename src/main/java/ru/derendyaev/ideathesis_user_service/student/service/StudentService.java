@@ -5,11 +5,9 @@ import org.springframework.stereotype.Service;
 import ru.derendyaev.ideathesis_user_service.exception.ObjectNotFoundException;
 import ru.derendyaev.ideathesis_user_service.student.dto.StudentAllDto;
 import ru.derendyaev.ideathesis_user_service.student.mapper.StudentMapper;
-import ru.derendyaev.ideathesis_user_service.student.model.Student;
 import ru.derendyaev.ideathesis_user_service.student.repository.StudentRepository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 

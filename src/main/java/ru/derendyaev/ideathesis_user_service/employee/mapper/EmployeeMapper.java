@@ -5,12 +5,6 @@ import org.springframework.stereotype.Component;
 import ru.derendyaev.ideathesis_user_service.employee.dto.EmployeeAllDto;
 import ru.derendyaev.ideathesis_user_service.employee.dto.EmployeeEmploymentAllDto;
 import ru.derendyaev.ideathesis_user_service.employee.model.Employee;
-import ru.derendyaev.ideathesis_user_service.employee.model.EmployeeEmployment;
-import ru.derendyaev.ideathesis_user_service.employee.repository.EmployeeEmploymentRepository;
-import ru.derendyaev.ideathesis_user_service.employmentType.model.EmploymentType;
-import ru.derendyaev.ideathesis_user_service.jobTitle.model.JobTitle;
-import ru.derendyaev.ideathesis_user_service.staffCategory.model.StaffCategory;
-import ru.derendyaev.ideathesis_user_service.subdivision.model.Subdivision;
 import ru.derendyaev.ideathesis_user_service.user.model.User;
 
 import java.util.List;
@@ -20,12 +14,12 @@ import java.util.stream.Collectors;
 public class EmployeeMapper {
 
     @Autowired
-    private EmployeeEmploymentRepository employeeEmploymentRepository;
+    private EmployeeEmploymentMapper employeeEmploymentMapper;
 
     public EmployeeAllDto toEmployeeAllDto(Employee employee) {
         User user = employee.getUser();
         List<EmployeeEmploymentAllDto> employeeEmployments = employee.getEmployeeEmployments().stream()
-                .map(this::toEmployeeEmploymentAllDto)
+                .map(employeeEmploymentMapper::toEmployeeEmploymentAllDto)
                 .collect(Collectors.toList());
 
         return EmployeeAllDto.builder()
@@ -43,23 +37,6 @@ public class EmployeeMapper {
                 .surname(employee.getSurname())
                 .dateOfBirth(employee.getDateOfBirth())
                 .employeeEmployments(employeeEmployments)
-                .build();
-    }
-
-    private EmployeeEmploymentAllDto toEmployeeEmploymentAllDto(EmployeeEmployment employment) {
-        JobTitle jobTitle = employment.getJobTitle();
-        StaffCategory staffCategory = employment.getStaffCategory();
-        EmploymentType employmentType = employment.getEmploymentType();
-        Subdivision subdivision = employment.getSubdivision();
-
-        return EmployeeEmploymentAllDto.builder()
-                .id(employment.getId())
-                .employeeGuid(employment.getEmployee().getGuid())
-                .jobTitle(jobTitle)
-                .staffCategory(staffCategory)
-                .employmentType(employmentType)
-                .subdivision(subdivision)
-                .jobState(employment.getJobState())
                 .build();
     }
 }

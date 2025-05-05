@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 import ru.derendyaev.ideathesis_user_service.degreeForm.model.DegreeForm;
 import ru.derendyaev.ideathesis_user_service.degreeLevel.model.DegreeLevel;
-import ru.derendyaev.ideathesis_user_service.department.Department;
+import ru.derendyaev.ideathesis_user_service.department.model.Department;
 import ru.derendyaev.ideathesis_user_service.studentGroup.model.StudentGroup;
 import ru.derendyaev.ideathesis_user_service.user.model.User;
 

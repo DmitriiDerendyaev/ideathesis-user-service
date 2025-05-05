@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.derendyaev.ideathesis_user_service.employee.dto.EmployeeAllDto;
-import ru.derendyaev.ideathesis_user_service.employee.model.Employee;
 import ru.derendyaev.ideathesis_user_service.employee.service.EmployeeService;
 
 import java.util.List;

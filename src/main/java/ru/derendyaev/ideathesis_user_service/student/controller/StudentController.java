@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.derendyaev.ideathesis_user_service.student.dto.StudentAllDto;
-import ru.derendyaev.ideathesis_user_service.student.model.Student;
 import ru.derendyaev.ideathesis_user_service.student.service.StudentService;
 
 import java.util.List;

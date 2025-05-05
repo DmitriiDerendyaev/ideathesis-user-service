@@ -1,4 +1,4 @@
-package ru.derendyaev.ideathesis_user_service.department;
+package ru.derendyaev.ideathesis_user_service.department.model;
 
 
 import jakarta.persistence.*;

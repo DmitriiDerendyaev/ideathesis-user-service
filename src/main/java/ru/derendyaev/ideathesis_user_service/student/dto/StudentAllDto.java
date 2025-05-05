@@ -2,10 +2,10 @@ package ru.derendyaev.ideathesis_user_service.student.dto;
 
 import lombok.Builder;
 import lombok.Data;
-import ru.derendyaev.ideathesis_user_service.degreeForm.model.DegreeForm;
-import ru.derendyaev.ideathesis_user_service.degreeLevel.model.DegreeLevel;
-import ru.derendyaev.ideathesis_user_service.department.Department;
-import ru.derendyaev.ideathesis_user_service.studentGroup.model.StudentGroup;
+import ru.derendyaev.ideathesis_user_service.degreeForm.dto.DegreeFormDto;
+import ru.derendyaev.ideathesis_user_service.degreeLevel.dto.DegreeLevelDto;
+import ru.derendyaev.ideathesis_user_service.department.dto.DepartmentDto;
+import ru.derendyaev.ideathesis_user_service.studentGroup.dto.StudentGroupDto;
 
 import java.util.Date;
 import java.util.UUID;
@@ -26,8 +26,8 @@ public class StudentAllDto {
     private Date updatedAt;
     private Integer course;
     private Integer startYear;
-    private StudentGroup studentGroup;
-    private Department department;
-    private DegreeLevel degreeLevel;
-    private DegreeForm degreeForm;
+    private StudentGroupDto studentGroup;
+    private DepartmentDto department;
+    private DegreeLevelDto degreeLevel;
+    private DegreeFormDto degreeForm;
 }
