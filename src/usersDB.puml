@@ -1,0 +1,97 @@
+@startuml
+
+entity users {
+    guid UUID <<PK>>
+    full_name
+    first_name
+    last_name
+    middle_name
+    email
+    phone
+    user_type
+    created_at
+    updated_at
+}
+
+entity student_groups {
+    id <<PK>>
+    name
+}
+
+entity departments {
+    id <<PK>>
+    name
+}
+
+entity degree_levels {
+    id <<PK>>
+    name
+}
+
+entity degree_forms {
+    id <<PK>>
+    name
+}
+
+entity students {
+    guid <<PK>>
+    group_id
+    course
+    start_year
+    department_id
+    degree_level_id
+    degree_form_id
+}
+
+entity job_titles {
+    id <<PK>>
+    name
+}
+
+entity staff_categories {
+    id <<PK>>
+    name
+}
+
+entity employment_types {
+    id <<PK>>
+    name
+}
+
+entity subdivisions {
+    id <<PK>>
+    name
+    guid
+}
+
+entity employees {
+    guid <<PK>>
+    date_of_birth
+}
+
+entity employee_employments {
+    id <<PK>>
+    employee_guid
+    job_title_id
+    staff_category_id
+    employment_type_id
+    subdivision_id
+    job_state
+}
+
+' ----- связи -----
+users ||--o{ students : "guid"
+users ||--o{ employees : "guid"
+
+students }o--|| student_groups : "group_id"
+students }o--|| departments : "department_id"
+students }o--|| degree_levels : "degree_level_id"
+students }o--|| degree_forms : "degree_form_id"
+
+employees ||--o{ employee_employments : "guid"
+employee_employments }o--|| job_titles : "job_title_id"
+employee_employments }o--|| staff_categories : "staff_category_id"
+employee_employments }o--|| employment_types : "employment_type_id"
+employee_employments }o--|| subdivisions : "subdivision_id"
+
+@enduml
