@@ -9,6 +9,7 @@ import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.time.LocalDateTime;
 
@@ -78,6 +79,14 @@ public class ErrorHandler {
     public ErrorResponse handlerRequestParameterException(final MissingServletRequestParameterException e) {
         log.warn("Missing request parameter: {}", e.getMessage());
         return new ErrorResponse(HttpStatus.BAD_REQUEST, "Missing request parameter", e.getMessage(),
+                LocalDateTime.now());
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlerNoResourceFoundException(final NoResourceFoundException e) {
+        log.warn("Request rout doesn't exist: {}", e.getMessage());
+        return new ErrorResponse(HttpStatus.BAD_REQUEST, "Request rout doesn't exist", e.getMessage(),
                 LocalDateTime.now());
     }
 }
