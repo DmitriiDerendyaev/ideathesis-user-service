@@ -1,3 +1,10 @@
+server:
+  port: 8082
 spring:
   application:
     name: ideathesis-user-service
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
