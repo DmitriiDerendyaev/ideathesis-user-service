@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "http://localhost:5173", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS})
 public class UserController {
 
     @Autowired
@@ -26,8 +27,4 @@ public class UserController {
         return ResponseEntity.ok(userService.getUserById(guid));
     }
 
-    @GetMapping("/email/{email}")
-    public ResponseEntity<UserAllDto> getUserByEmail(@PathVariable String email) {
-        return ResponseEntity.ok(userService.getUserByEmail(email));
-    }
 }

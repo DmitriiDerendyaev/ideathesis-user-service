@@ -1,0 +1,50 @@
+@startuml
+actor Client
+
+participant ":StudentController" as StudentController
+participant ":StudentService" as StudentService
+participant ":EmployeeController" as EmployeeController
+participant ":EmployeeService" as EmployeeService
+participant "Database" as DB
+
+== Get All Students ==
+Client -> StudentController: GET /api/students
+StudentController -> StudentService: getAllStudents()
+StudentService -> DB: Query all students
+DB --> StudentService: Student data
+StudentService --> StudentController: List<StudentAllDto>
+StudentController --> Client: List<StudentAllDto>
+
+== Get Student by GUID ==
+Client -> StudentController: GET /api/students/{guid}
+StudentController -> StudentService: getStudentById(guid)
+StudentService -> DB: Query student by GUID
+DB --> StudentService: Student data
+StudentService --> StudentController: StudentAllDto
+StudentController --> Client: ResponseEntity<StudentAllDto>
+
+== Get All Employees ==
+Client -> EmployeeController: GET /api/employees
+EmployeeController -> EmployeeService: getAllEmployees()
+EmployeeService -> DB: Query all employees
+DB --> EmployeeService: Employee data
+EmployeeService --> EmployeeController: List<EmployeeAllDto>
+EmployeeController --> Client: List<EmployeeAllDto>
+
+== Get Employee by GUID ==
+Client -> EmployeeController: GET /api/employees/{guid}
+EmployeeController -> EmployeeService: getEmployeeById(guid)
+EmployeeService -> DB: Query employee by GUID
+DB --> EmployeeService: Employee data
+EmployeeService --> EmployeeController: EmployeeAllDto
+EmployeeController --> Client: ResponseEntity<EmployeeAllDto>
+
+== Search Employees by Full Name ==
+Client -> EmployeeController: GET /api/employees/search?fullName={fullName}
+EmployeeController -> EmployeeService: searchEmployeesByFullName(fullName)
+EmployeeService -> DB: Query employees by fullName
+DB --> EmployeeService: Employee data
+EmployeeService --> EmployeeController: List<EmployeeAllDto>
+EmployeeController --> Client: List<EmployeeAllDto>
+
+@enduml
