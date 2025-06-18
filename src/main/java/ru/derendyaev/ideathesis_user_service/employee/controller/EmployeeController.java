@@ -31,4 +31,13 @@ public class EmployeeController {
     public List<EmployeeAllDto> searchEmployeesByFullName(@RequestParam String fullName) {
         return employeeService.searchEmployeesByFullName(fullName);
     }
+
+    @GetMapping("/search-by-subdivision")
+    public List<EmployeeAllDto> searchEmployeesBySubdivisionAndFullName(
+            @RequestParam(required = false) String subdivisionName,
+            @RequestParam(required = false) String fullName,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return employeeService.searchEmployeesBySubdivisionAndFullName(subdivisionName, fullName, page, size);
+    }
 }

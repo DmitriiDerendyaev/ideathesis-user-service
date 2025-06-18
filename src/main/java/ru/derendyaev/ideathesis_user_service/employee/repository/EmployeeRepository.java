@@ -15,4 +15,14 @@ public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
 
     @Query("SELECT e FROM Employee e WHERE LOWER(e.fullName) LIKE LOWER(CONCAT('%', :fullName, '%'))")
     List<Employee> findByFullNameContainingIgnoreCase(@Param("fullName") String fullName, Pageable pageable);
+
+    @Query("SELECT DISTINCT e FROM Employee e " +
+            "JOIN e.employeeEmployments ee " +
+            "JOIN ee.subdivision s " +
+            "WHERE LOWER(s.name) LIKE LOWER(CONCAT('%', CASE WHEN :subdivisionName IS NULL THEN '' ELSE :subdivisionName END, '%')) " +
+            "AND LOWER(e.fullName) LIKE LOWER(CONCAT('%', CASE WHEN :fullName IS NULL THEN '' ELSE :fullName END, '%'))")
+    List<Employee> findEmployeesBySubdivisionAndFullName(
+            @Param("subdivisionName") String subdivisionName,
+            @Param("fullName") String fullName,
+            Pageable pageable);
 }
