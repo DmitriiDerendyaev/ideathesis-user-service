@@ -26,4 +26,14 @@ public class StudentController {
     public ResponseEntity<StudentAllDto> getStudentById(@PathVariable UUID guid) {
         return ResponseEntity.ok(studentService.getStudentById(guid));
     }
+
+    @GetMapping("/search")
+    public List<StudentAllDto> searchStudents(
+            @RequestParam(required = false) String groupName,
+            @RequestParam(required = false) String departmentName,
+            @RequestParam(required = false) String fullName,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        return studentService.searchStudentsByGroupDepartmentAndFullName(groupName, departmentName, fullName, page, size);
+    }
 }
